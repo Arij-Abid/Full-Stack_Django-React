@@ -11,6 +11,7 @@ pipeline {
             steps {
                 git branch: 'main',
                 url: 'https://github.com/Arij-Abid/Full-Stack_Django-React.git'
+                sh 'ls -la'
             }
         }
 
