@@ -6,7 +6,6 @@ import {
   ShoppingCart,
   DollarSign,
   TrendingUp,
-  Users,
 } from "lucide-react";
 import api from "@/lib/api";
 import { Helmet } from "react-helmet-async";

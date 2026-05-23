@@ -7,16 +7,15 @@ export interface Product {
   category: string;
   stock: number;
   featured?: boolean;
-
   // added by clint
-  quantity: number
+  quantity?: number;
 }
 
 export interface Order {
   id: string;
   date: string;
   total: number;
-  status: 'pending' | 'processing' | 'shipped' | 'delivered' | 'cancelled';
+  status: "pending" | "processing" | "shipped" | "delivered" | "cancelled";
   items: Array<{
     productId: string;
     productName: string;

@@ -23,15 +23,18 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { useAuth } from "@/contexts/AuthContext";
 
-// ✅ Active Link Helper
+
 const NavLinkItem = ({
   to,
   children,
   className = "",
+  
+  
 }: {
   to: string;
   children: React.ReactNode;
   className?: string;
+  onClick?: () => void;
 }) => {
   const location = useLocation();
   const isActive = location.pathname === to;

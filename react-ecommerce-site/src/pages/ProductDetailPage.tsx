@@ -24,7 +24,8 @@ import { Helmet } from "react-helmet-async";
 import { Link, useParams } from "react-router-dom";
 
 const ProductDetailPage = () => {
-  const [quantity, setQuantity] = useState(1);
+/*  const [quantity, setQuantity] = useState(1);
+ */
   const { slug } = useParams();
   const { cartCode } = useCart();
   const [product, setProduct] = useState<IProduct | null>(null);

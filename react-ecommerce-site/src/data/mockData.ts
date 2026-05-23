@@ -10,6 +10,7 @@ export const mockProducts: Product[] = [
     category: 'Electronics',
     stock: 25,
     featured: true,
+     quantity: 0
   },
   {
     id: '2',
@@ -20,6 +21,7 @@ export const mockProducts: Product[] = [
     category: 'Clothing',
     stock: 50,
     featured: true,
+     quantity: 0
   },
   {
     id: '3',
@@ -29,6 +31,7 @@ export const mockProducts: Product[] = [
     description: 'Voice-controlled smart assistant for your home. Control lights, music, and more with simple voice commands.',
     category: 'Electronics',
     stock: 15,
+   quantity: 0
   },
   {
     id: '4',
@@ -39,6 +42,7 @@ export const mockProducts: Product[] = [
     category: 'Home & Garden',
     stock: 8,
     featured: true,
+     quantity: 0
   },
   {
     id: '5',
@@ -48,6 +52,7 @@ export const mockProducts: Product[] = [
     description: 'Advanced fitness tracker with heart rate monitoring, GPS, and sleep tracking capabilities.',
     category: 'Sports',
     stock: 30,
+     quantity: 0
   },
   {
     id: '6',
@@ -58,6 +63,7 @@ export const mockProducts: Product[] = [
     category: 'Home & Garden',
     stock: 100,
     featured: true,
+     quantity: 0
   },
   {
     id: '7',
@@ -67,6 +73,7 @@ export const mockProducts: Product[] = [
     description: 'Comprehensive guide to programming fundamentals. Perfect for beginners and intermediate developers.',
     category: 'Books',
     stock: 40,
+     quantity: 0
   },
   {
     id: '8',
@@ -76,6 +83,7 @@ export const mockProducts: Product[] = [
     description: 'High-quality yoga mat with excellent grip and cushioning. Eco-friendly and durable.',
     category: 'Sports',
     stock: 0,
+     quantity: 0
   },
 ];
 
