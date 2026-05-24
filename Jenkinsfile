@@ -3,6 +3,7 @@ pipeline {
 
     environment {
         DOCKERHUB_CREDENTIALS = credentials('dockerhub_id')
+        SECRET_KEY = credentials('secret-key-id')
       //  SONAR_TOKEN = credentials('sonar-token')
        // NEXUS_URL = "http://your-nexus-url:8081"
     }
