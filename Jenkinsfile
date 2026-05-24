@@ -5,10 +5,12 @@ pipeline {
         DOCKERHUB_CREDENTIALS = credentials('dockerhub_id')
         SECRET_KEY = credentials('secret-key-id')
         GOOGLE_API_KEY = credentials('google-api-key')
+        DB_PASSWORD = credentials('mysql-password')
       //  SONAR_TOKEN = credentials('sonar-token')
        // NEXUS_URL = "http://your-nexus-url:8081"
     }
 
+   
     stages {
 
         stage('Checkout') {
@@ -80,6 +82,18 @@ stage('Backend Tests') {
         }
     }
 }
+         stage('Create .env') {
+    steps {
+        sh '''
+  cat > django-ecommerce/.env << EOF
+DB_PASSWORD=${DB_PASSWORD}
+DB_HOST=db
+DB_PORT=3306
+        EOF
+        '''
+    }
+}
+
 
         /* =========================
            5. BUILD DOCKER IMAGES
