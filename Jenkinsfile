@@ -72,6 +72,7 @@ stage('Backend Tests') {
     steps {
         dir('react-ecommerce-site') {
             sh '''
+               export npm_config_cache=/tmp/.npm
                 rm -rf node_modules package-lock.json
                 npm install
                 npm run build
