@@ -38,7 +38,7 @@ pipeline {
         /* =========================
            3. BACKEND (DJANGO)
         ========================== */
- stage('Backend Tests') {
+stage('Backend Tests') {
     agent {
         docker {
             image 'python:3.11'
@@ -46,9 +46,13 @@ pipeline {
     }
     steps {
         dir('django-ecommerce') {
-            sh 'python --version'
-            sh 'pip install -r requirements.txt'
-            sh 'python manage.py test'
+            sh '''
+                python -m venv venv
+                . venv/bin/activate
+                python -m pip install --upgrade pip
+                pip install -r requirements.txt
+                python manage.py test
+            '''
         }
     }
 }
