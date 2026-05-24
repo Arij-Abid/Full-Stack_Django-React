@@ -62,22 +62,21 @@ stage('Backend Tests') {
         /* =========================
            4. FRONTEND (REACT)
         ========================== */
-        stage('Frontend Build') {
-
-     agent {
+  stage('Frontend Build') {
+    agent {
         docker {
             image 'node:20'
-            }
-         }
-            steps {
-              dir('react-ecommerce-site'){
-                    sh '''
-                        npm install
-                        npm run build
-                    '''
-                }
-            }
         }
+    }
+
+    steps {
+        dir('react-ecommerce-site') {
+            sh 'node -v'
+            sh 'npm install'
+            sh 'npm run build'
+        }
+    }
+}
 
         /* =========================
            5. BUILD DOCKER IMAGES
