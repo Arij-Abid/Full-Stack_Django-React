@@ -88,8 +88,8 @@ stage('Backend Tests') {
             steps {
                 script {
                     sh """
-                        docker build -t arijabid/backend:${BUILD_ID} ./backend
-                        docker build -t arijabid/frontend:${BUILD_ID} ./frontend
+                        docker build -t arijabid/django-ecommerce:${BUILD_ID} ./django-ecommerce
+                        docker build -t arijabid/react-ecommerce-site:${BUILD_ID} ./react-ecommerce-site
                     """
                 }
             }
@@ -103,8 +103,8 @@ stage('Backend Tests') {
                 sh """
                     echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin
 
-                    docker push arijabid/backend:${BUILD_ID}
-                    docker push arijabid/frontend:${BUILD_ID}
+                    docker push arijabid/django-ecommerce:${BUILD_ID}
+                    docker push arijabid/react-ecommerce-site:${BUILD_ID}
                 """
             }
         }
