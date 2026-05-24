@@ -38,16 +38,20 @@ pipeline {
         /* =========================
            3. BACKEND (DJANGO)
         ========================== */
-        stage('Backend Tests') {
-            steps {
-               dir('django-ecommerce'){
-                    sh '''
-                        python -m pip install -r requirements.txt
-                        python manage.py test
-                    '''
-                }
-            }
+ stage('Backend Tests') {
+    agent {
+        docker {
+            image 'python:3.11'
         }
+    }
+    steps {
+        dir('django-ecommerce') {
+            sh 'python --version'
+            sh 'pip install -r requirements.txt'
+            sh 'python manage.py test'
+        }
+    }
+}
 
         /* =========================
            4. FRONTEND (REACT)
