@@ -71,6 +71,8 @@ stage('Backend Tests') {
 
     steps {
         dir('react-ecommerce-site') {
+              export HOME=/tmp
+                export NPM_CONFIG_CACHE=$WORKSPACE/.npm
             sh 'node -v'
             sh 'npm install'
             sh 'npm run build'
