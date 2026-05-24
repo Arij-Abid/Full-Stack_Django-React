@@ -64,11 +64,11 @@ stage('Backend Tests') {
         ========================== */
         stage('Frontend Build') {
 
-                agent {
+     agent {
         docker {
             image 'node:20'
-        }
-    }
+            }
+         }
             steps {
               dir('react-ecommerce-site'){
                     sh '''
