@@ -40,7 +40,7 @@ pipeline {
         ========================== */
         stage('Backend Tests') {
             steps {
-                dir('backend') {
+               dir('django-ecommerce'){
                     sh '''
                         python -m pip install -r requirements.txt
                         python manage.py test
@@ -54,7 +54,7 @@ pipeline {
         ========================== */
         stage('Frontend Build') {
             steps {
-                dir('frontend') {
+              dir('react-ecommerce-site'){
                     sh '''
                         npm install
                         npm run build
