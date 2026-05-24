@@ -63,6 +63,12 @@ stage('Backend Tests') {
            4. FRONTEND (REACT)
         ========================== */
         stage('Frontend Build') {
+
+                agent {
+        docker {
+            image 'node:20'
+        }
+    }
             steps {
               dir('react-ecommerce-site'){
                     sh '''
