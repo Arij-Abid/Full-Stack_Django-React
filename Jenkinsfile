@@ -71,10 +71,11 @@ stage('Backend Tests') {
 
     steps {
         dir('react-ecommerce-site') {
-
-            sh 'node -v'
-            sh 'npm install'
-            sh 'npm run build'
+            sh '''
+                rm -rf node_modules package-lock.json
+                npm install
+                npm run build
+            '''
         }
     }
 }
