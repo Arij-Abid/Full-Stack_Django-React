@@ -93,19 +93,12 @@ DB_PORT=3306
         '''
     }
 }
-stage('SonarQube Analysis') {
-    steps {
-        sh """
-        docker run --rm \
-          -v $PWD:/usr/src \
-          sonarsource/sonar-scanner-cli \
-          -Dsonar.projectKey=fullstack-django-react \
-          -Dsonar.sources=/usr/src \
-          -Dsonar.host.url=http://sonarqube:9000 \
-          -Dsonar.login=$SONAR_TOKEN
-        """
-    }
-}
+  stage('SonarQue') {
+            steps {
+                echo 'Analyse de la Qualité du Code : ';
+                sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar';
+            }
+        }  
         /* =========================
            5. BUILD DOCKER IMAGES
         ========================== */
