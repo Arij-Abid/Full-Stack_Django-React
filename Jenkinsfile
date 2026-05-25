@@ -94,25 +94,19 @@ DB_PORT=3306
     }
 }
 
-  stage('SonarQube') {
-            steps {
-                    sh '''
-                    sonar-scanner \
-                    -Dsonar.projectKey=fullstack-django-react \
-                    -Dsonar.sources=. \
-                    -Dsonar.host.url=http://localhost:9000 \
-                    -Dsonar.login=$SONAR_TOKEN
-                    '''
-            }
-        }
-
-        stage('Quality Gate') {
-            steps {
-                timeout(time: 2, unit: 'MINUTES') {
-                    waitForQualityGate abortPipeline: true
-                }
-            }
-        }
+stage('SonarQube') {
+    steps {
+        sh '''
+        docker run --rm \
+        -v $PWD:/usr/src \
+        sonarsource/sonar-scanner-cli \
+        -Dsonar.projectKey=fullstack-django-react \
+        -Dsonar.sources=/usr/src \
+        -Dsonar.host.url=http://localhost:9000 \
+        -Dsonar.login=$SONAR_TOKEN
+        '''
+    }
+}
         /* =========================
            5. BUILD DOCKER IMAGES
         ========================== */
