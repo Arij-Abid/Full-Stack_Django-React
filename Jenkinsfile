@@ -101,7 +101,7 @@ stage('SonarQube Analysis') {
           sonarsource/sonar-scanner-cli \
           -Dsonar.projectKey=fullstack-django-react \
           -Dsonar.sources=/usr/src \
-          -Dsonar.host.url=http://172.17.0.1:9000 \
+          -Dsonar.host.url=http://sonarqube:9000 \
           -Dsonar.login=$SONAR_TOKEN
         '''
     }
