@@ -6,7 +6,7 @@ pipeline {
         SECRET_KEY = credentials('secret-key-id')
         GOOGLE_API_KEY = credentials('google-api-key')
         DB_PASSWORD = credentials('mysql-password')
-      //  SONAR_TOKEN = credentials('sonar-token')
+         SONAR_TOKEN = credentials('sonar-token')
        // NEXUS_URL = "http://your-nexus-url:8081"
     }
 
@@ -94,7 +94,27 @@ DB_PORT=3306
     }
 }
 
+  stage('SonarQube Analysis') {
+            steps {
+                withSonarQubeEnv('sonar') {
+                    sh '''
+                    sonar-scanner \
+                    -Dsonar.projectKey=fullstack-django-react \
+                    -Dsonar.sources=. \
+                    -Dsonar.host.url=http://localhost:9000 \
+                    -Dsonar.login=$SONAR_TOKEN
+                    '''
+                }
+            }
+        }
 
+        stage('Quality Gate') {
+            steps {
+                timeout(time: 2, unit: 'MINUTES') {
+                    waitForQualityGate abortPipeline: true
+                }
+            }
+        }
         /* =========================
            5. BUILD DOCKER IMAGES
         ========================== */
