@@ -96,7 +96,6 @@ DB_PORT=3306
 
   stage('SonarQube Analysis') {
             steps {
-                withSonarQubeEnv('sonar') {
                     sh '''
                     sonar-scanner \
                     -Dsonar.projectKey=fullstack-django-react \
@@ -104,7 +103,6 @@ DB_PORT=3306
                     -Dsonar.host.url=http://localhost:9000 \
                     -Dsonar.login=$SONAR_TOKEN
                     '''
-                }
             }
         }
 
