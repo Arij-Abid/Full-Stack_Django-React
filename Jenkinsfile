@@ -93,17 +93,17 @@ DB_PORT=3306
         '''
     }
 }
-
-stage('SonarQube') {
+stage('SonarQube Analysis') {
     steps {
-        sh '''
+        sh """
         docker run --rm \
-        -v $PWD:/usr/src \
-        -Dsonar.projectKey=fullstack-django-react \
-        -Dsonar.sources=/usr/src \
-        -Dsonar.host.url=http://localhost:9000 \
-        -Dsonar.login=$SONAR_TOKEN
-        '''
+          -v $PWD:/usr/src \
+          sonarsource/sonar-scanner-cli \
+          -Dsonar.projectKey=fullstack-django-react \
+          -Dsonar.sources=/usr/src \
+          -Dsonar.host.url=http://sonarqube:9000 \
+          -Dsonar.login=$SONAR_TOKEN
+        """
     }
 }
         /* =========================
