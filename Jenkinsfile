@@ -99,7 +99,6 @@ stage('SonarQube') {
         sh '''
         docker run --rm \
         -v $PWD:/usr/src \
-        sonarsource/sonar-scanner-cli \
         -Dsonar.projectKey=fullstack-django-react \
         -Dsonar.sources=/usr/src \
         -Dsonar.host.url=http://localhost:9000 \
