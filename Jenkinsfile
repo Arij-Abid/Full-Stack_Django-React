@@ -24,19 +24,19 @@ pipeline {
         }
 
 /*
-        stage('SonarQube Analysis') {
-            steps {
-                withSonarQubeEnv('SonarQube') {
-                    sh """
-                        sonar-scanner \
-                        -Dsonar.projectKey=django-react-project \
-                        -Dsonar.sources=. \
-                        -D-Dsonar.host.url=http://localhost:9000 \
-                        -Dsonar.login=${SONAR_TOKEN}
-                    """
-                }
-            }
+  stage('SonarQube Analysis') {
+    steps {
+        withSonarQubeEnv('SonarQube') {
+            sh """
+                sonar-scanner \
+                -Dsonar.projectKey=fullstack-django-react \
+                -Dsonar.sources=. \
+                -Dsonar.host.url=http://localhost:9000 \
+                -Dsonar.login=$SONAR_TOKEN
+            """
         }
+    }
+}
         */
 
         /* =========================
