@@ -94,7 +94,7 @@ DB_PORT=3306
     }
 }
 
-  stage('SonarQube Analysis') {
+  stage('SonarQube') {
             steps {
                     sh '''
                     sonar-scanner \
