@@ -31,7 +31,7 @@ pipeline {
                         sonar-scanner \
                         -Dsonar.projectKey=django-react-project \
                         -Dsonar.sources=. \
-                        -Dsonar.host.url=http://sonarqube:9000 \
+                        -D-Dsonar.host.url=http://localhost:9000 \
                         -Dsonar.login=${SONAR_TOKEN}
                     """
                 }
