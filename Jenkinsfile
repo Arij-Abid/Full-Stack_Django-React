@@ -154,15 +154,18 @@ stage('SonarQube Analysis') {
                 """
             }
         }
-    }
 
-     stage('Monitoring with Grafana Prometheus') {
+
+		     stage('Monitoring with Grafana Prometheus') {
             steps {
                 echo 'Monitoring : ';
                 sh 'docker start prometheus';
 				sh 'docker start grafana';
             }
         }  
+
+    }
+
 
 
     /* =========================
