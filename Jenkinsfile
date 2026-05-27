@@ -171,18 +171,56 @@ stage('SonarQube Analysis') {
     /* =========================
        POST ACTIONS
     ========================== */
-    post {
-        always {
-            sh 'docker logout || true'
-            echo 'Pipeline terminé'
-        }
-
-        success {
-            echo '✅ Build réussi'
-        }
-
-        failure {
-            echo '❌ Pipeline échoué'
-        }
+  post {
+    always {
+        sh 'docker logout || true'
+        echo 'Pipeline terminé'
     }
+
+    success {
+        echo '✅ Build réussi'
+
+        emailext (
+            subject: "✅ Build Success: ${JOB_NAME} #${BUILD_NUMBER}",
+            body: """
+                <h2 style="color:green;">Build Successful 🎉</h2>
+
+                <p><b>Job Name:</b> ${JOB_NAME}</p>
+                <p><b>Build Number:</b> ${BUILD_NUMBER}</p>
+                <p><b>Status:</b> SUCCESS</p>
+
+                <p>
+                    <a href="${BUILD_URL}">
+                        Voir le Build
+                    </a>
+                </p>
+            """,
+            to: 'tonemail@gmail.com',
+            mimeType: 'text/html'
+        )
+    }
+
+    failure {
+        echo '❌ Pipeline échoué'
+
+        emailext (
+            subject: "❌ Build Failed: ${JOB_NAME} #${BUILD_NUMBER}",
+            body: """
+                <h2 style="color:red;">Build Failed ❌</h2>
+
+                <p><b>Job Name:</b> ${JOB_NAME}</p>
+                <p><b>Build Number:</b> ${BUILD_NUMBER}</p>
+                <p><b>Status:</b> FAILED</p>
+
+                <p>
+                    <a href="${BUILD_URL}">
+                        Voir le Build
+                    </a>
+                </p>
+            """,
+            to: 'abidarij1@gmail.com',
+            mimeType: 'text/html'
+        )
+    }
+}
 }
