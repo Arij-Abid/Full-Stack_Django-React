@@ -195,7 +195,7 @@ stage('SonarQube Analysis') {
                     </a>
                 </p>
             """,
-            to: 'tonemail@gmail.com',
+            to: 'abidarij1@gmail.com',
             mimeType: 'text/html'
         )
     }
