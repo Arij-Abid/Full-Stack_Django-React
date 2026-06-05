@@ -212,7 +212,8 @@ post {
                 """,
 
                 mimeType: 'text/html',
-                to: 'abidarij1@gmail.com'
+                to: 'abidarij1@gmail.com',
+                from: 'abidarij1@gmail.com'
             )
         }
     }
@@ -242,7 +243,8 @@ post {
                 """,
 
                 mimeType: 'text/html',
-                to: 'abidarij1@gmail.com'
+                to: 'abidarij1@gmail.com',
+                from: 'abidarij1@gmail.com'
             )
         }
     }
