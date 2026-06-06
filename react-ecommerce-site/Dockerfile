@@ -1,19 +1,26 @@
-# Build stage
-FROM node:20-alpine AS builder
+
+FROM node:20 AS builder
 
 WORKDIR /app
 
+# Copier package files
 COPY package*.json ./
 
-RUN npm install
+# Installer dépendances
+RUN npm ci
 
+# Copier le projet
 COPY . .
 
+# Build React/Vite
 RUN npm run build
 
-# Production stage
+# =========================
+# Production Stage
+# =========================
 FROM nginx:alpine
 
+# Copier build React
 COPY --from=builder /app/dist /usr/share/nginx/html
 
 EXPOSE 80
