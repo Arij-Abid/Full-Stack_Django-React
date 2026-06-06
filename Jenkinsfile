@@ -141,24 +141,23 @@ EOF
         success {
             echo '✅ Build réussi'
 
-            emailext(
-                subject: "✅ Build Success: ${JOB_NAME} #${BUILD_NUMBER}",
-                body: """
-                <h2 style="color:green;">
-                Build Successful 🎉
-                </h2>
+          emailext(
+    subject: "✅ Build Success: ${JOB_NAME} #${BUILD_NUMBER}",
+    body: """
+    <h2>Build Successful 🎉</h2>
 
-                <p><b>Job Name:</b> ${JOB_NAME}</p>
-                <p><b>Build Number:</b> ${BUILD_NUMBER}</p>
-                <p><b>Status:</b> SUCCESS</p>
+    <p>Job: ${JOB_NAME}</p>
+    <p>Build: ${BUILD_NUMBER}</p>
 
-                <a href="${BUILD_URL}">
-                Voir le Build
-                </a>
-                """,
-                to: 'abidarij1@gmail.com',
-                mimeType: 'text/html'
-            )
+    <a href="${BUILD_URL}">
+    Open Build
+    </a>
+    """,
+    to: 'abidarij1@gmail.com',
+    from: 'abidarij1@gmail.com',
+    replyTo: 'abidarij1@gmail.com',
+    mimeType: 'text/html'
+)
         }
 
         failure {
