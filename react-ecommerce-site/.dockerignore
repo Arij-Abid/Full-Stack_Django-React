@@ -1,4 +1,4 @@
-```text
+
 # Node modules
 node_modules/
 
@@ -24,4 +24,4 @@ yarn-error.log*
 # OS files
 .DS_Store
 Thumbs.db
-```
+
